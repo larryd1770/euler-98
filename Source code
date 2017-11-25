@@ -1,0 +1,50 @@
+from pythonista_startup1 import *
+from sympy import igcd, isprime
+
+enable_faulthandler()
+numerator = 2
+denominator = 5
+i = 0
+maxlimit = 0.5
+minlimit = (1 / float(3))
+dot = 0
+fraction = 0.0
+while denominator <= 12000:
+    if isprime(denominator):
+        numerator = denominator // 3
+        fraction = numerator / float(denominator)
+        while fraction < maxlimit:
+            dot += 1
+            if dot % 100000 == 0:
+                print(numerator, denominator, i)
+            else:
+                pass
+            if fraction <= minlimit:
+                pass
+            else:
+                i += 1
+            numerator += 1
+            fraction = (numerator / float(denominator))
+    else:
+        numerator = denominator // 3
+        fraction = numerator / float(denominator)
+        while fraction < maxlimit:
+            dot += 1
+            if dot % 100000 == 0:
+                print(numerator, denominator, i)
+            else:
+                pass
+            if fraction <= minlimit:
+                pass
+            elif igcd(numerator, denominator) == 1:
+                i += 1
+            else:
+                pass
+            numerator += 1
+            fraction = numerator / float(denominator)
+    denominator += 1
+print('\nThere appear to be', i, 'fractions in the ' +
+    'range 1/3 < x < 1/2 with denominator of 12000 or less.')
+
+
+        
